@@ -22,31 +22,26 @@ def main():
     # temperature (C)
     tempPath = '/html/body/div[1]/main/div[2]/main/div[1]/section/div[2]/div[2]/details[1]/div/div[1]/div/div[1]/span'
     temp_text = weather_driver.find_element(by='xpath', value=(tempPath)).text
-    print(temp_text)
 
     # humidity (%)
     humidityPath = '/html/body/div[1]/main/div[2]/main/div[1]/section/div[2]/div[2]/details[1]/div/div[2]/ul/li[1]/div/span[2]'
     humidity_text = weather_driver.find_element(by='xpath', value=(humidityPath)).text
-    print(humidity_text)
 
     # chance_of_rain (%)
     rainPath = '/html/body/div[1]/main/div[2]/main/div[1]/section/div[2]/div[2]/details[1]/div/div[1]/div/div[3]/div[1]/span'
     rain_text = weather_driver.find_element(by='xpath', value=(rainPath)).text
-    print(rain_text)
 
     # wind (MPH)
     windPath = '/html/body/div[1]/main/div[2]/main/div[1]/section/div[2]/div[2]/details[1]/div/div[1]/div/div[3]/div[2]/span/span[2]'
     wind_text = weather_driver.find_element(by='xpath', value=(windPath)).text
-    print(wind_text)
 
     # Extract occupancy percentage and prepare to insert data into the database
     percentage_value = extractor(occupancy_text)
-    print('Attempting to insert data into the DB')
 
     # Define the timezone
     tz = pytz.timezone('Europe/London')
     
-    # Get the current time and date in BST
+    # Get the current time and date in BST (Brittish Summer Time)
     current_time_bst = datetime.now(tz).strftime('%H:%M')
     current_day_bst = datetime.now(tz).strftime('%A')
     current_date_bst = datetime.now(tz).strftime('%Y-%m-%d')
@@ -65,6 +60,7 @@ def main():
     # Cleanup
     occupancy_driver.quit()
     weather_driver.quit()
+
 
 if __name__ == "__main__":
     main()

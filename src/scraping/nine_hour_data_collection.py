@@ -1,6 +1,6 @@
 import time
 from datetime import datetime, timedelta
-from extractOccupancy import main # Replace 'your_module' and 'your_function' with your actual module and function names
+from extractOccupancy import main 
 
 # Set the duration for 9 hours
 duration = timedelta(hours=9)

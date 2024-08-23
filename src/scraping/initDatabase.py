@@ -2,9 +2,17 @@
 import os
 import sqlite3
 from datetime import datetime, timezone
-print("Current working directory:", os.getcwd())
-conn = sqlite3.connect('occupancy_data/gym_occupancy_data.db')
 
+# Define the directory and database paths
+directory = 'occupancy_data'
+database_path = os.path.join(directory, 'gym_occupancy_data.db')
+
+# Create the directory if it doesn't exist
+if not os.path.exists(directory):
+    os.makedirs(directory)
+    print(f"Directory '{directory}' created.")
+
+conn = sqlite3.connect(database_path)
 cursor = conn.cursor()
 
 cursor.execute('''
@@ -20,9 +28,6 @@ cursor.execute('''
         wind TEXT
     )
 ''')
-
-
-
 
 
 conn.commit()

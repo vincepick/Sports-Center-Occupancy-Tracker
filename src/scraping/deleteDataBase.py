@@ -1,5 +1,7 @@
 import os
 
+# Deleting the database
+
 def confirm_deletion():
     confirmation = input("Are you sure you want to delete the database? Type 'yes' to confirm: ")
     return confirmation.lower() == 'yes'
@@ -13,7 +15,7 @@ def delete_database(db_path):
 
 def main():
     db_folder = 'occupancy_data'
-    db_name = 'gym_occupancy_data.db'  # Replace with your database name
+    db_name = 'gym_occupancy_data.db'  
     db_path = os.path.join(db_folder, db_name)
     if confirm_deletion():
         delete_database(db_path)
