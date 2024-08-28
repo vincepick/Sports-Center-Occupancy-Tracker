@@ -18,9 +18,10 @@ def occupancy_selenium_monitor():
     chrome_options.add_argument('--headless')  # Run in headless mode
 
     web = os.getenv('WEB_PATH_OCCUPANCY')
-    path=os.getenv('DRIVER_PATH')
-    service=Service(executable_path=path)
-    driver = webdriver.Chrome(service=service)
+    path = os.getenv('DRIVER_PATH')
+    service = Service(executable_path=path)
+    
+    driver = webdriver.Chrome(service=service, options=chrome_options)
 
     driver.get(web)
 

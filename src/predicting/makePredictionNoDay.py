@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime
 from tensorflow.keras.models import load_model
 
-model = tf.keras.models.load_model('gym_occupancy_model.h5')
+model = tf.keras.models.load_model('gym_occupancy_model.keras')
 
 
 # No day value
@@ -19,4 +19,6 @@ test_data = pd.DataFrame({
 
 # Guess occupancy for new data using the same model used to make the training data
 predicted_occupancy = model.predict(test_data)
-print(f"Predicted occupancy percentage: {predicted_occupancy[0][0]:.2f}%")
+
+predicted_occupancy_percentage = predicted_occupancy[0][0] * 100
+print(f"Predicted occupancy percentage: {predicted_occupancy_percentage:.2f}%")
