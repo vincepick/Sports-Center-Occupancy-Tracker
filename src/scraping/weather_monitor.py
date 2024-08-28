@@ -19,7 +19,7 @@ def weather_selenium_monitor():
     web = os.getenv('WEB_PATH_WEATHER')
     path=os.getenv('DRIVER_PATH')
     service=Service(executable_path=path)
-    driver = webdriver.Chrome(service=service)
+    driver = webdriver.Chrome(service=service, options=chrome_options)
 
 
 
