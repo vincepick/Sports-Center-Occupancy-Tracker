@@ -47,7 +47,7 @@ def main():
     current_date_bst = datetime.now(tz).strftime('%Y-%m-%d')
 
     # Open sqlite connection
-    conn = sqlite3.connect('occupancy_data/gym_occupancy_data.db')
+    conn = sqlite3.connect('occupancy_data/gym_occupancy_data_local.db')
     cursor = conn.cursor()
 
     # Insert data into the database
