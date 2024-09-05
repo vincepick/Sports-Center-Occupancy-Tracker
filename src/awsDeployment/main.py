@@ -3,6 +3,7 @@ import time
 import re
 import pytz
 import mysql.connector
+
 from datetime import datetime, timezone
 
 from selenium import webdriver
@@ -13,6 +14,8 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from tempfile import mkdtemp
 
 def lambda_handler(event, context):
+
+
     chrome_options = ChromeOptions()
     chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
@@ -80,12 +83,17 @@ def lambda_handler(event, context):
         current_day_bst = datetime.now(tz).strftime('%A')
         current_date_bst = datetime.now(tz).strftime('%Y-%m-%d')
 
+        db_host = os.getenv('DB_HOST')
+        db_user = os.getenv('DB_USER')
+        db_password = os.getenv('DB_PASSWORD')
+        db_database = os.getenv('DB_DATABASE')
+
 
         cnx=mysql.connector.connect(
-            host='occupancy-db.craysy60cdwy.us-east-2.rds.amazonaws.com',
-            user='admin',
-            password='shu8Ren8',
-            database='occupancy_schema'
+            host=db_host,
+            user=db_user,
+            password=db_password,
+            database=db_database
         )
 
         cursor = cnx.cursor()
