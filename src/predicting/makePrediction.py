@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime
 from tensorflow.keras.models import load_model
 
-model = tf.keras.models.load_model('gym_occupancy_model.h5')
+model = tf.keras.models.load_model('model/gym_occupancy_model.h5')
 
 
 # Sample data which will be used to predict a value for occupancy

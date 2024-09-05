@@ -63,7 +63,7 @@ print(f"Test MAE: {test_mae}")
 
 predictions = model.predict(X_test)
 
-model.save('gym_occupancy_model.h5')
+model.save('model/gym_occupancy_model.h5')
 
 
 
