@@ -12,3 +12,5 @@ To run the program once
 `python src/extractOccupancy.py`
 
 can put some diagrams of the structure of the sql databases
+
+can consider trying to access the APIs directly instead of scraping using selenium
