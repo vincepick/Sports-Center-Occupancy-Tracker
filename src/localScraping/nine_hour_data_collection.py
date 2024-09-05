@@ -2,6 +2,8 @@ import time
 from datetime import datetime, timedelta
 from scraping.main import main 
 
+#Script to collect data repeatedly for 9 hours, running every 5 minutes
+
 # Set the duration for 9 hours
 duration = timedelta(hours=9)
 end_time = datetime.now() + duration

@@ -1,5 +1,6 @@
 import re 
 
+# program to extract the percentage value without the percentage sign using regex
 
 def extractor(input_string):
     percentage = re.search(r'(\d+)%', input_string)

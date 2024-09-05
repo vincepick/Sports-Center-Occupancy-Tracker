@@ -1,6 +1,6 @@
 import os
 
-# Deleting the database
+# Deleting the SQLite database
 
 def confirm_deletion():
     confirmation = input("Are you sure you want to delete the database? Type 'yes' to confirm: ")

@@ -7,7 +7,7 @@ from selenium.webdriver.chrome.options import Options
 from dotenv import load_dotenv
 import os
 
-# Returns selenium web driver for weather information
+# Returns selenium web driver for weather statistics
 def weather_selenium_monitor():
     load_dotenv()
     chrome_options = Options()

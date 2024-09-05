@@ -8,6 +8,8 @@ import os
 from regexExtractor import extractor
 import sqlite3
 
+
+# Main program used to run full extraction and insertion of data into the DB
 def main():
     load_dotenv()
 

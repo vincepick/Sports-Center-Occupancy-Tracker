@@ -2,6 +2,8 @@ import sqlite3
 import pandas as pd
 from datetime import datetime
 
+# Program used to query local sqlite DB and convering it into a DF
+
 # Connect to the SQLite database
 conn = sqlite3.connect('occupancy_data/gym_occupancy_data.db')
 
