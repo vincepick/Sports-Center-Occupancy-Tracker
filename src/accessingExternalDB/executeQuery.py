@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# File to execute the contained query, can be used for removing entries from or otherwise manipulating the DB
 
 def main():
 

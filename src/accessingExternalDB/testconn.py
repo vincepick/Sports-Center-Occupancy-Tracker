@@ -7,7 +7,6 @@ load_dotenv()
 
 
 # This is a program used to test the connection to the AWS hosted DB, by connecting then inserting the value 5 into each column of the DB
-
 def main():
     db_host = os.getenv('DB_HOST')
     db_user = os.getenv('DB_USER')

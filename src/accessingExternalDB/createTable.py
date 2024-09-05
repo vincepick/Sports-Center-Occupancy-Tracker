@@ -3,30 +3,23 @@ import random
 import string
 from datetime import datetime, timedelta
 
-# RDS settings
-REGION = 'us-east-2'
-rds_host = 'database-1.craysy60cdwy.us-east-2.rds.amazonaws.com'
-name = 'admin'
-password = 'shu8Ren8'
-db_name = 'occupancy-db'
-port = 3306  # Default MySQL port
+# Program to create table in the DB, can also add random values if desired
 
 def create_table():
-    # Connect to the MySQL database
-    try:
-        conn = pymysql.connect(
-            host=rds_host,
-            user=name,
-            password=password,
-            db=db_name,
-            port=port,
-            connect_timeout=5
-        )
-    except pymysql.MySQLError as e:
-        print(f"ERROR: Unexpected error: Could not connect to MySQL instance. {e}")
-        return
+    db_host = os.getenv('DB_HOST')
+    db_user = os.getenv('DB_USER')
+    db_password = os.getenv('DB_PASSWORD')
+    db_database = os.getenv('DB_DATABASE')
 
-    print("SUCCESS: Connection to RDS MySQL instance succeeded")
+    # Connect to the MySQL database
+    cnx=mysql.connector.connect(
+        host=db_host,
+        user=db_user,
+        password=db_password,
+        database=db_database
+    )
+
+    cursor = cnx.cursor()
 
     # Create a cursor object
     try:
@@ -54,19 +47,18 @@ def create_table():
         conn.close()
 
 def insert_random_values():
+    db_host = os.getenv('DB_HOST')
+    db_user = os.getenv('DB_USER')
+    db_password = os.getenv('DB_PASSWORD')
+    db_database = os.getenv('DB_DATABASE')
+
     # Connect to the MySQL database
-    try:
-        conn = pymysql.connect(
-            host=rds_host,
-            user=name,
-            password=password,
-            db=db_name,
-            port=port,
-            connect_timeout=5
-        )
-    except pymysql.MySQLError as e:
-        print(f"ERROR: Unexpected error: Could not connect to MySQL instance. {e}")
-        return
+    cnx=mysql.connector.connect(
+        host=db_host,
+        user=db_user,
+        password=db_password,
+        database=db_database
+    )
 
     # Generate random values
     percentage_column = random.randint(0, 100)
@@ -103,4 +95,4 @@ def insert_random_values():
 
 if __name__ == "__main__":
     create_table()
-    insert_random_values()
+    # insert_random_values()
