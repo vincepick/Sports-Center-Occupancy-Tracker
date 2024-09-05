@@ -1,4 +1,4 @@
-# used from https://www.youtube.com/watch?v=8XBkm9DD6Ic
+# partially using the docker from https://www.youtube.com/watch?v=8XBkm9DD6Ic
 
 FROM amazon/aws-lambda-python:3.12
 
@@ -17,6 +17,10 @@ RUN pip install selenium
 RUN pip install mysql-connector-python 
 RUN pip install pytz
 # Copy the main application code
-COPY main.py ./
+COPY lambdaHandler.py .
+COPY chromeSetup.py .
+COPY scraper.py .
+COPY database.py .
+
 # Command to run the Lambda function
-CMD [ "main.lambda_handler" ]
+CMD [ "lambdaHandler.lambda_handler" ]
