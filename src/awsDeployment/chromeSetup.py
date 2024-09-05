@@ -3,7 +3,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from tempfile import mkdtemp
 
+# To setup the chrome client used in AWS Lambda
+
 def get_chrome_driver():
+    # Adding options
     chrome_options = ChromeOptions()
     chrome_options.add_argument("--headless=new")
     chrome_options.add_argument("--no-sandbox")
@@ -20,6 +23,7 @@ def get_chrome_driver():
     chrome_options.add_argument("--log-path=/tmp")
     chrome_options.binary_location = "/opt/chrome/chrome-linux64/chrome"
 
+    # Paths for the chrome drivers
     service = Service(
         executable_path="/opt/chrome-driver/chromedriver-linux64/chromedriver",
         service_log_path="/tmp/chromedriver.log"

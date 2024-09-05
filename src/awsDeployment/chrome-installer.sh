@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+# Bash script to install chrome
 latest_stable_json="https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json"
 # Retrieve the JSON data using curl
 json_data=$(curl -s "$latest_stable_json")

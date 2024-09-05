@@ -1,4 +1,4 @@
-# used from https://www.youtube.com/watch?v=8XBkm9DD6Ic
+# partially using the docker from https://www.youtube.com/watch?v=8XBkm9DD6Ic
 
 FROM amazon/aws-lambda-python:3.12
 
