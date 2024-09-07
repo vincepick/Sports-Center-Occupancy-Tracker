@@ -28,7 +28,7 @@ def main():
     # Query to delete rows where BST is null, but can be used for removing any row
     delete_query = """
     DELETE FROM occupancy_data
-    WHERE id = 275
+    WHERE id = 324
     """
     
     cursor.execute(delete_query)
