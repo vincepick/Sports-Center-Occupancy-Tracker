@@ -44,7 +44,7 @@ def retrieveCurrentData():
     
     # Get the current time and date in BST (Brittish Summer Time)
     current_time_bst = datetime.now(tz).strftime('%H:%M')
-    current_day_bst = datetime.now(tz).strftime('%A')
+    current_day_bst = datetime.now(tz).weekday()
     current_date_bst = datetime.now(tz).strftime('%Y-%m-%d')
 
     # Cleanup

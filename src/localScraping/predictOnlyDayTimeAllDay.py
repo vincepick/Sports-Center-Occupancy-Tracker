@@ -7,7 +7,7 @@ import sys
 import os
 from retrieveCurrentData import retrieveCurrentData
 
-model = tf.keras.models.load_model('models/sept15th.keras')
+model = tf.keras.models.load_model('models/onlyTimeDaySept15th.keras')
 
 scraped_data = retrieveCurrentData()
 
@@ -27,13 +27,9 @@ for hour in range (7,22):
     
     # Prepare test data for prediction, ensuring all values are in the expected format
     test_data = pd.DataFrame({
-        'temperature': [float(scraped_data['temperature'].replace('°', ''))],  # Clean temperature data
-        'humidity': [float(scraped_data['humidity'].replace('%', ''))],          # Clean humidity data
-        'chance_of_rain': [float(scraped_data['chance_of_rain'].replace('%', ''))],  # Clean chance of rain
-        'wind': [float(scraped_data['wind_speed'].replace(' mph', ''))],         # Clean wind speed
-        'bst_time': [bst_time_minutes]
+        'bst_time': [bst_time_minutes],
+        'day_of_wee': [scraped_data['day_of_week']]
     })
-
 
     # Make predictions
     predicted_occupancy = model.predict(test_data)

@@ -5,13 +5,14 @@ from tensorflow.keras.layers import Dense, Dropout
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import pandas as pd
+from datetime import datetime
 
 # Load dataset
 filename = "occupancy_data/awsDBdata/convertedAWSdata_2024-09-15.csv"
 df = pd.read_csv(filename)
 
 # Remove unnecessary columns
-df = df.drop(['current_date_bst', 'day_of_week', 'id'], axis=1)
+df = df.drop(['current_date_bst', 'id', 'temperature', 'humidity', 'chance_of_rain', 'wind'], axis=1)
 
 # Separate target and features
 target = df.pop('percentage_column')
@@ -21,7 +22,6 @@ X_train, X_test, y_train, y_test = train_test_split(df, target, test_size=0.2, r
 
 # Scale the features
 scaler = StandardScaler()
-# scaler = MinMaxScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
@@ -47,13 +47,10 @@ print(f"Test Loss: {test_loss}, Test MAE: {test_mae}")
 # Make prediction
 predictions = model.predict(X_test)
 
-# Save  model
+# Save model
 model_name = input("Enter the name to save the model: ")
 model_path = f"models/{model_name}.keras"
-
-# Save model
 model.save(model_path)
 
 print(f"Model saved as {model_path}")
-
 print(predictions)
