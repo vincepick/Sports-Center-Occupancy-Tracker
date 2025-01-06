@@ -7,11 +7,15 @@ from sklearn.preprocessing import StandardScaler
 import pandas as pd
 
 # Load dataset
-filename = "occupancy_data/awsDBdata/convertedAWSdata_2024-09-15.csv"
+filename = "occupancy_data/awsDBdata/convertedAWSdata_2025-01-05.csv"
 df = pd.read_csv(filename)
 
 # Remove unnecessary columns
 df = df.drop(['current_date_bst', 'day_of_week', 'id'], axis=1)
+
+# Apply manual scaling to `bst_time`
+scaling_factor = 50  # Increase importance of bst_time by this factor
+df['bst_time'] = df['bst_time'] * scaling_factor
 
 # Separate target and features
 target = df.pop('percentage_column')

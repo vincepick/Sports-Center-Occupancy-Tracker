@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import datetime
 from tensorflow.keras.models import load_model
 
-model = tf.keras.models.load_model('models/gym_occupancy_improved_model.keras')
+model = tf.keras.models.load_model('models/janDataSecondIteration.keras')
 
 
 # No day value

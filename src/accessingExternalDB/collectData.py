@@ -4,6 +4,7 @@ import os
 import mysql.connector
 from dotenv import load_dotenv
 import pandas as pd
+from pathlib import Path
 
 load_dotenv()
 
@@ -36,14 +37,22 @@ def collectData():
         'Monday': 0, 'Tuesday': 1, 'Wednesday': 2, 'Thursday': 3, 'Friday': 4, 'Saturday': 5, 'Sunday': 6
     })
 
+    print(df.head())
+    print(df.dtypes)
+
     # Clean data and convert to integers to later be used by tensorflow
     df['temperature'] = df['temperature'].str.replace('°', '').astype(int)
+    df['humidity'] = df['humidity'].apply(lambda x: '75%' if 'of' in str(x) else x)  # Replace '0 of 11' with '75%'
     df['humidity'] = df['humidity'].str.replace('%', '').astype(int)
     df['chance_of_rain'] = df['chance_of_rain'].str.replace('%', '').astype(int)
     df['wind'] = df['wind'].str.replace(' km/h', '').astype(int)
 
     current_date = datetime.now().strftime('%Y-%m-%d')
 
+    # Get the current working directory
+    current_directory = Path.cwd()
+    print(f"Current Directory: {current_directory}")
+    
     # Create the filename with the current date
     filename = f"occupancy_data/awsDBdata/convertedAWSdata_{current_date}.csv"
 
